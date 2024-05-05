@@ -42,4 +42,13 @@ app.get("/:word/echo", (req, res) => {
   res.send({ echo: req.params.word });
 });
 
+app
+  .route("/name")
+  .get((req, res) => {
+    res.send({ name: `${req.query.first} ${req.query.last}` });
+  })
+  .post((req, res) => {
+    //
+  });
+
 module.exports = app;
