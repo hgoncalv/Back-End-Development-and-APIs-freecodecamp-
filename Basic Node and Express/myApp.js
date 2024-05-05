@@ -38,4 +38,8 @@ app.get(
   }
 );
 
+app.get("/:word/echo", (req, res) => {
+  res.send({ echo: req.params.word });
+});
+
 module.exports = app;
