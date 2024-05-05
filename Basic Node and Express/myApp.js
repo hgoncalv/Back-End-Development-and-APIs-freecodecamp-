@@ -52,7 +52,7 @@ app
     res.send({ name: `${req.query.first} ${req.query.last}` });
   })
   .post((req, res) => {
-    //
+    res.send({ name: `${req.body.first} ${req.body.last}` });
   });
 
 module.exports = app;
