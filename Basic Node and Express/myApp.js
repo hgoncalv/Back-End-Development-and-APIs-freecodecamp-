@@ -1,11 +1,13 @@
 let express = require("express");
 let app = express();
 
-console.log("Hello World");
+const publicFolderPath = __dirname + "/public";
+
+app.use("/public", express.static(publicFolderPath));
 
 app.get("/", (req, res) => {
-  thisFolderPath = __dirname;
-  filePath = thisFolderPath + "/views/index.html";
+  const thisFolderPath = __dirname;
+  const filePath = thisFolderPath + "/views/index.html";
   res.sendFile(filePath);
 });
 
