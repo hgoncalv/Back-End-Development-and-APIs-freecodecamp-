@@ -19,7 +19,20 @@ mongoose.connect(process.env.MONGO_URI, {
 // const Person = mongoose.model("Person", personSchema);
 
 const createAndSavePerson = (done) => {
-  done(null /*, data*/);
+  // Create a new document instance using the Person model constructor
+  const newPerson = new Person({
+    name: "John Doe",
+    age: 30,
+    favoriteFoods: ["Pizza", "Burger", "Ice Cream"],
+  });
+
+  // Save the document to the database
+  newPerson.save((err, data) => {
+    if (err) {
+      return done(err);
+    }
+    return done(null, data);
+  });
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
