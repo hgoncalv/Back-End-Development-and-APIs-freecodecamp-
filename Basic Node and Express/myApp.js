@@ -1,4 +1,6 @@
 require("dotenv").config();
+bodyParser = require("body-parser");
+
 let express = require("express");
 let app = express();
 
@@ -6,6 +8,8 @@ const publicFolderPath = __dirname + "/public";
 
 //middleware
 app.use("/public", express.static(publicFolderPath));
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use("/", (req, res, next) => {
   const reqInfo = { method: req.method, path: req.path, ip: req.ip };
