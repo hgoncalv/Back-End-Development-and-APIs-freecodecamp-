@@ -4,8 +4,16 @@ let app = express();
 
 const publicFolderPath = __dirname + "/public";
 
+//middleware
 app.use("/public", express.static(publicFolderPath));
 
+app.use("/", (req, res, next) => {
+  const reqInfo = { method: req.method, path: req.path, ip: req.ip };
+  console.log(`${reqInfo.method} ${reqInfo.path} - ${reqInfo.ip}`);
+  next();
+});
+
+//routers
 app.get("/", (req, res) => {
   const thisFolderPath = __dirname;
   const filePath = thisFolderPath + "/views/index.html";
